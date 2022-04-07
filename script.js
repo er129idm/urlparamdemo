@@ -55,18 +55,14 @@ document.addEventListener("DOMContentLoaded", function(){
   projectDisplayElement = document.getElementById("projectDisplay");
 
   /* Get URL Params */
-  /* Determine the requested category (page type) */
   let queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
   let urlSection = urlParams.get('section');
   let urlID = urlParams.get('id');
 
-  console.log("urlSection = " + urlSection);
-  console.log("urlID = " + urlID);
+  if (urlSection != "item") { /* Display project previews in grid */
 
-
-  if (urlSection != "item") { /// Display project previews in grid
-
+    /* Set page title if we are in a specific section */
     if (urlSection == "code") {
       pageTitleElement.innerText = "Code Projects:";
     }
@@ -74,13 +70,17 @@ document.addEventListener("DOMContentLoaded", function(){
       pageTitleElement.innerText = "Art Projects:";
     }
 
+    /* Create thumbnails for matching category, or all */
     for (let i = 0; i < portfolioCollection.length; i++) {
       if (portfolioCollection[i]["category"] == urlSection || urlSection == "" || urlSection == null){
         createProjectPreview(portfolioCollection[i]);
       }
     }
+
   }
-  else { /// Display individual project
+
+  else {
+    /* Display individual project by trying to match the "ID" value */
     for (let i = 0; i < portfolioCollection.length; i++) {
       if (portfolioCollection[i]["id"] == urlID) {
         createProjectPage(portfolioCollection[i]);
@@ -109,13 +109,12 @@ function createProjectPreview(incomingJSON){
   newPreviewThumbnail.src = incomingJSON["image"];
   newPreviewElement.appendChild(newPreviewThumbnail);
 
-  console.log(newPreviewElement);
-
   outputGridElement.appendChild(newPreviewLink);
 
 }
 
 function createProjectPage(incomingJSON) {
+  
   pageTitleElement.innerText = incomingJSON["itemTitle"];
 
   let newProjectElement = document.createElement("DIV");
