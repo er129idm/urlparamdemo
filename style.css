@@ -18,7 +18,7 @@ body {
   padding-left: 20vw;
   padding-right: 20vw;
   padding-bottom: 5vw;
-  border-bottom: 1px solid rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
   margin-bottom: 5vw;
 }
 
@@ -26,6 +26,7 @@ body {
   color: #000;
   text-decoration: none;
   padding: 10px;
+  border-radius: 3px;
 }
 
 #nav>a:hover {
@@ -46,7 +47,7 @@ h2#pageTitle {
 #outputGrid>a, #outputGrid>a:visited {
   color: #000;
   text-decoration: none;
-  border: 1px solid rgba(0,0,0,0.25);
+  border: 1px solid rgba(0,0,0,0.1);
   padding: 1.25vw;
   transition: background-color 0.25s;
   border-radius: 3px;
@@ -58,9 +59,7 @@ h2#pageTitle {
 
 .previewTitle {
   font-weight: bold;
-  /* padding-bottom: 1vw; */
   margin-bottom: 1.25vw;
-  /* border-bottom: 1px solid rgba(0,0,0,0.25); */
 }
 
 .thumbnail {
